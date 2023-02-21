@@ -10,9 +10,11 @@ import datetime
 import razorpay
 from pprint import pprint
 import math
+from trycourier import Courier
 
 
 client = razorpay.Client(auth=("rzp_test_7XJSI9QBxhtFSQ", "FGTnbTqN5gpIW9MVDJx9TAQJ"))
+courier_client = Courier(auth_token="pk_prod_TG1GS5TYWYMN47QGJZGXG1YBXQJM")
 
 
 
@@ -317,6 +319,25 @@ def send_payment_link(request, order_number):
     payment.save()
     # Print the short URL
     print("Payment link short URL:", payment_link)
+
+    resp = courier_client.send_message(
+            message={
+                "to": {
+                "email": "kunalpatil970730@gmail.com",
+                },
+                "template": "36T493HMVWMASJH0M4XCNXXP8ZKY",
+                "data": {
+                    "name": order.cname,
+                    "order_number": order.order_number,
+                    "amount" : int(math.ceil((order.order_total))),
+                    "payment_link": payment_link,
+                },
+            }
+            )
+
+
+    print(resp['requestId'])
+
     return redirect('payments')
 
 def send_payout_link(request, order_number):
