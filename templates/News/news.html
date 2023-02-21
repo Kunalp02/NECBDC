@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class='heading_container'>
+  <h1 class='blog_heading'>News</h1>
+</div>
+
+
+
+{% if news_list %}
+  <div class="container d-flex flex-wrap justify-content-evenly">
+    {% for news in news_list %}
+    <div class="card" style="width: 18rem;">
+      <img src="{{news.image}}"/>
+      <div class="card-body">
+        <h5 class="card-title">{{news.title}}</h5>
+        <p class="card-text">{{news.author}}</p>
+        <a href="#" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% else %}
+
+<p id='error_message'>{{message}}</p>
+
+
+{% endif %}
+
+{% endblock content %}

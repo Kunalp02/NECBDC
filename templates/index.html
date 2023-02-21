@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <div class="box fade-in mb-5 ">
+        <div class="box1">
+            <div class="d-lg-block text-start ">
+                <h1 class="text-start text-dark text-decoration-none">Welcome to NECBDC</h1>
+            </div>
+            <p>
+                Welcome to the North East Cane & Bamboo Development Council website. We are a leading organization in India dedicated to the research and development of our country's forest areas. Our mission is to protect and conserve our natural resources while promoting sustainable development. We are committed to the import and export of goods, as well as the implementation of various activities that support this mission. We invite you to explore our website and learn more about the work we do and how you can get involved.    
+            </p>
+        </div>
+
+        <div id="carouselExampleIndicators" class="carousel slide box2" data-ride="carousel">
+            <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block" src="{% static 'images/image_new.jpg' %}"  alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block" src="{% static 'images/image_new.jpg' %}"  alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block" src="{% static 'images/image_new.jpg' %}" alt="Third slide">
+            </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class=" no-decoration">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class=" no-decoration">Next</span>
+            </a>
+        <div>
+    </div>
+
+    </div>
+
+
+</div>
+
+
+
+<hr style="height:.2rem; width:98%;margin:0 auto;color:red;"></hr>    
+
+<div>
+    <div class='heading_container mb-3'>
+            <h1 class='blog_heading'>Photo Gallery</h1>
+    </div>
+
+    <div class="gallery d-flex align-items-center mb-3">
+        <img src="{% static 'images/necbdc/image5.jpg' %}" alt="image 1">
+        <img src="{% static 'images/necbdc/image4.jpg' %}" alt="image 2">
+        <img src="{% static 'images/necbdc/image3.jpg' %}" alt="image 3">
+        <img src="{% static 'images/necbdc/image4.jpg' %}" alt="image 4">
+        <img src="{% static 'images/necbdc/image5.jpg' %}" alt="image 5">
+        <!-- Add more images as needed -->
+      </div>
+
+
+    <div class='heading_container mb-3'>
+        <h1 class='blog_heading'>Video Gallery</h1>
+    </div>
+
+    <div class="gallery d-flex align-items-center mb-3">
+        <img src="{% static 'images/necbdc/vid1.jpg' %}" alt="image 1">
+        <img src="{% static 'images/necbdc/vid2.jpg' %}" alt="image 2">
+        <img src="{% static 'images/necbdc/vid3.jpg' %}" alt="image 3">
+    </div>
+
+
+</div>
+
+
+
+
+
+
+{% endblock content %}
+

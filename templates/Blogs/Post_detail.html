@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if post %}
+<div class='post_detail_container'>
+    <h1 class='blog_heading'> {{post.title}} </h1>
+    <div>
+        <img src="{{post.image.url}}" alt="image" srcset="">
+    </div>
+    <div>
+       {{post.content | safe}}
+    </div>
+</div>
+{% endif %}
+
+{% if message %}
+<p id='error_message'>{{message}}</p>
+{% endif %}
+
+
+{% endblock content %}

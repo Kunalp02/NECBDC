@@ -1,0 +1,52 @@
+{% extends 'Exporter/new_dashboard.html' %}
+
+{% block content %}
+
+<p>Request list along with its status</p>
+
+<div class="row">
+    <div class="col-12">
+        {% comment %} <div class="card">
+            <div class="card-body"> {% endcomment %}
+
+                {% comment %} <h4 class="mt-0 header-title">Bordered table</h4>
+                <p class="text-muted mb-4">Add <code>.table-bordered</code> for
+                    borders on all sides of the table and cells.
+                </p> {% endcomment %}
+
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0 table-centered">
+                        <thead>
+                        <tr>
+                            <th>Request Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Type Name</th>
+                            <th>Type Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for request in requests %}
+                        <tr>
+                            <td>{{request.id}}</td>
+                            <td>{{request.name}}</td>
+                            <td>{{request.email}}</td>
+                            <td>{{request.type_name}}</td>
+                            <td>{{request.quantity_toadd}}</td>
+                            <td>{{request.is_verify}}</td>
+
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table><!--end /table-->
+                </div><!--end /tableresponsive-->
+            {% comment %} </div><!--end card-body-->
+        </div><!--end card--> {% endcomment %}
+    </div><!--end col-->
+</div><!--end row-->
+
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% load static %}   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/exporter/style.css' %}">
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="{% url 'form' %}">Form</a></li>
+            <li><a href="{% url 'requests' %}">Requests</a></li>
+            <li><a href="{% url 'prices' %}">Prices</a></li>
+        </ul>
+    </nav>
+
+    <h1>Exporter Dashboard</h1>
+    {% block content %}
+    
+    
+    {% endblock content %}
+
+
+</body>
+</html>
+
+

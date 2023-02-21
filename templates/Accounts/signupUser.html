@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class='heading_container'>
+    <h1 class='blog_heading'>Register</h1>
+</div>
+    
+<div class='reg_container'>
+    <form class="reg_form_container" name='registration' method='POST' action="{% url 'signupUser' %}">
+        {% csrf_token %}
+        <div class="reg_form_div1">
+                <input type="text" name="firstname" placeholder="First Name">
+                <input type="text" name="lastname" placeholder="Last Name">
+        </div>
+        <div class="reg_form_div2">
+            <input type="text" name='email' name="email" placeholder="Email Address">
+        </div>
+        <div class="reg_form_div2">
+            <input type="password" name='password' name="password" placeholder="Password">
+        </div>
+        <div class="reg_form_div2">
+            <input type="password" name='password' name="confirm_password" placeholder="Confirm Password">
+        </div>
+        <div>
+            <p>forgot password?</p>
+            <p><input id='reg_tick' name='checkbox' style='font-size:5px;' type='checkbox' required/>Accept all terms and conditions</p>
+            <p id='myshowErrors'></p>
+        </div>
+        <div class="reg_form_div2">
+            <button class="reg_form_button" type="submit" >SignUp</button>
+            <span href='{% url 'loginUser' %}'>Login</span>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

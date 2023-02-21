@@ -1,0 +1,143 @@
+{% extends 'Exporter/Dashboard/base.html' %}
+{% block content %}
+
+
+
+<div id="app-content">
+    <div class="app-content-area">
+      <!-- Container fluid -->
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class=" col-xl-12 col-md-12 col-sm-12 col-12 ">
+            <!-- Content -->
+                
+            <div class="page-header">
+                <h1>Orders</h1>
+            </div>
+
+
+            <div class="tab-content p-4 p-4" id="pills-tabContent-table">
+              {% include 'includes/alerts.html' %}
+
+                <div class="tab-pane tab-example-design fade show
+                  active" id="pills-table-design" role="tabpanel" aria-labelledby="pills-table-design-tab">
+                  <!-- Basic table -->
+                   <!-- bordered table -->
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="table-primary">
+                            <th scope="col">#</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Customer Email</th>
+                            <th scope="col">Order Type</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Payment Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{order.cname}}</td>
+                            <td>{{order.cemail}}</td>
+                            <td>{{order.order_type}}</td>
+                            <td>{{order.type_name}}</td>
+                            <td>{{order.payment_status}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>                  
+                </div>
+
+                <!-- disabled and active states -->
+                
+               <nav class="" aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+                  <!-- Table 2 -->
+
+              {% comment %} <div class="tab-content p-4 p-4" id="pills-tabContent-table">
+                <div class="tab-pane tab-example-design fade show
+                  active" id="pills-table-design" role="tabpanel" aria-labelledby="pills-table-design-tab">
+                  <!-- Basic table -->
+                  
+
+                   <!-- bordered table -->
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="table-primary">
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                  
+                </div>
+
+                <!-- disabled and active states -->
+               <nav class="" aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+
+
+                </div>
+              </div>
+                {% endcomment %}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

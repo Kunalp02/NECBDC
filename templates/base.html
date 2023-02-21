@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+.head{
+    height: 50vh;
+    background-image: radial-gradient(
+                rgba(171, 255, 61, 0.37),
+                rgba(36, 36, 36, 0.849)), url('{% static 'images\main.jpg' %}');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@media screen and (min-width: 700px) {
+    .head{
+        height: 45vh;
+        background-image: radial-gradient(
+                  rgba(171, 255, 61, 0.37),
+                  rgba(36, 36, 36, 0.849)), url('{% static 'images\main.jpg' %}');
+                  background-repeat: repeat;
+        background-size: contain;
+        font-weight: bolder;
+        text-shadow: 2px 2px #000000;
+    }
+
+}
+
+@media screen and (min-width: 700px) {
+    .head{
+        height: 45vh;
+        background-image: radial-gradient(
+                  rgba(171, 255, 61, 0.37),
+                  rgba(36, 36, 36, 0.849)), url('{% static 'images\main.jpg' %}');
+        background-repeat: repeat;
+        background-size: contain;
+        font-weight: bolder;
+        text-shadow: 2px 2px #000000;
+    }
+
+}
+
+
+@media screen and (min-width: 700px) {
+    .head{
+        height: 45vh;
+        background-image: radial-gradient(
+                  rgba(171, 255, 61, 0.37),
+                  rgba(36, 36, 36, 0.849)), url('{% static 'images\main.jpg' %}');
+        background-repeat: repeat;
+        background-size: contain;
+        font-weight: bolder;
+        text-shadow: 2px 2px #000000;
+    } 
+
+</style>
+    <div class="nav-container">
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'display_news' %}">News</a></li>
+            <li><a href="{% url 'projects' %}">Projects</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
+            <li> <a href="#">About CBTC</a></li>
+            <li><a href="#">Contact Us</a></li>
+
+            {% if user.is_authenticated %}
+                <li><a href="#">Welcome {{user.first_name}}!</a></li>
+                <li><a href="{% url 'logOut' %}">Log out</a></li>
+            {% else %}
+                <li><a href="{% url 'loginUser' %}" aria-hidden="false">Login</a></li>
+                <li><a href="{% url 'signupUser' %}" aria-hidden="false">Register</a></li>
+                <li><a href="#" aria-hidden="false">Welcome Guest</a></li>
+                <li><a href="{% url 'ExporterLogin' %}" target="_blank" aria-hidden="false">Exporter login</a></li>
+            {% endif %}
+
+        </ul>
+    </nav>
+    <div class="headtext text-center">
+        <p>
+        <h1>NORTH EAST CANE BAMBOO DEVELOPMENT COUNCIL</h1>
+        <h4>UNDER NORTH EASTERN COUNCIL,MINISTRY OF DONER</h4>
+        </p>
+    </div>
+</div>
+
+
+<marquee class="mb-3 mt-3" behavior="" direction="">
+    <img src="{% static 'images/icons8-news.gif' %}"></img><span>Latest News Lorem ipsum dolor sit amet</span>
+</marquee>
+
+<div class="main-container mb-5 d-flex flex-wrap flex-column justify-content-start">
+{% include 'includes/chatbot.html' %}
+
+{% block content %}
+
+{% include 'includes/chatbot.html' %}
+
+{% endblock content %}
+</div> 
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-content d-flex flex-row">
+
+            <div class="footer-section about">
+                <h1 class="footer-heading"><span>NECBDC</span></h1>
+                <p>
+                    The North East Cane Bamboo Development Council (NECBDC) is a statutory body under the North Eastern Council (NEC), Ministry of Development of North Eastern Region (DoNER), Government of India. The NECBDC was established in 1986 under the North Eastern Council Act, 1971. The NECBDC is a nodal agency for the development of cane and bamboo in the North Eastern Region (NER) of India.
+                </p>
+                <div class="contact">
+                    <span><i class="bi bi-person-lines-fill"></i>&nbsp;0361-222-2222</span>
+                    &nbsp;
+                    <span><i class="bi bi-envelope-at-fill"></i>&nbsp;necbdc@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="footer-section d-inline-flex flex-wrap">
+                <div class="links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <a href="#">
+                            <li>Home</li>
+                        </a>
+                        <a href="#">
+                            <li>Resources</li>
+                        </a>
+                        <a href="#">
+                            <li>News</li>
+                        </a>
+                        <a href="#">
+                            <li>Projects</li>
+                        </a>
+                        <a href="#">
+                            <li>Blog</li>
+                        </a>
+                        <a href="#">
+                            <li>About CBTC</li>
+                        </a>
+                        <a href="#">
+                            <li>Contact Us</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="links">
+                    <h3>Important Links</h3>
+                    <ul>
+                        <a href="#">
+                            <li>india.gov.in</li>
+                        </a>
+                        <a href="#">
+                            <li>MDoNER</li>
+                        </a>
+                        <a href="#">
+                            <li>NEC</li>
+                        </a>
+                        <a href="#">
+                            <li>NBM</li>
+                        </a>
+                        <a href="#">
+                            <li>Invest</li>
+                        </a>
+                        <a href="#">
+                            <li>Make In India</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script  src="{% static 'js/script.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="{% static 'js/form-validation.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+

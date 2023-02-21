@@ -1,0 +1,57 @@
+{% extends 'Exporter/Dashboard/base.html' %}
+{% block content %}
+
+
+
+<div id="app-content">
+    <div class="app-content-area">
+      <!-- Container fluid -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class=" col-xl-9 col-md-12 col-sm-12 col-12 ">
+            <!-- Content -->
+                
+            
+            <div class="page-header">
+                    <h1>Warehouse Details</h1>
+            </div>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr class="table-primary">
+                <th scope="col">WareHouse</th>
+                <th scope="col">Types</th>
+                <th scope="col">Stock In Units</th>
+                <th scope="col">Prices in Rs.</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for warehouse in warehouses %}
+              {% for wh_type in warehouse.warehousetype_set.all %}
+              <tr>
+                {% if forloop.first %}
+                <td rowspan="{{ warehouse.warehousetype_set.count }}">{{ warehouse.w_name }}</td>
+                {% endif %}
+                <td>{{ wh_type.type.type_name }}</td>
+                <td>{{ wh_type.stock_capacity }}</td>
+                <td>{{ wh_type.price_per_unit }}</td>
+              </tr>
+              {% endfor %}
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+                </div>
+               
+              </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

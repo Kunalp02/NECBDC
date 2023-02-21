@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class='heading_container'>
+<h1 class='blog_heading'>Projects</h1>
+</div>
+
+
+<div class='projects_container'>
+  <table class='projects_table'>
+    <tr>
+      <th>Project Name</th>
+      <th>Co-ordinator</th>
+      <th>Download</th>
+    </tr>
+    {% for project in projects %}
+    <tr>
+      <td>{{project.project_name}}</td>
+      <td>{{project.authors}}</td>
+      <td><a href={{project.project_file.url}} target="_blank">Click Here</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+
+{% endblock content %}

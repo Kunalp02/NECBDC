@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="heading_container">
+  <h1 class="blog_heading">Blog</h1>
+</div>
+
+{% if all_post %}
+  <div class="container d-flex flex-wrap justify-content-evenly">
+    {% for post in all_post %}
+    <div class="card" style="width: 18rem;">
+      <img src="{{post.image.url}}"/>
+      <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.created_at}}</p>
+        <a href={% url 'post_detail' post.slug %}>Read More</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% else %}
+
+<p id='error_message'>{{message}}</p>
+
+
+{% endif %}
+
+{% endblock content %}

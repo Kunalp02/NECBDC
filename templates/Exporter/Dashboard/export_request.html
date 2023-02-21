@@ -1,0 +1,166 @@
+{% extends 'Exporter/Dashboard/base.html' %}
+{% block content %}
+
+
+
+<div id="app-content">
+    <div class="app-content-area">
+      <!-- Container fluid -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class=" col-xl-9 col-md-12 col-sm-12 col-12 ">
+            <!-- Content -->
+                
+            
+            <div class="page-header">
+                    <h1>Form</h1>
+                </div>
+
+                <form action="{% url 'export_request' %}" method="POST">
+                    {% csrf_token %}
+                    {% include 'includes/alerts.html' %}
+
+                <div class="mb-6">
+                    <div class="card">
+                    <!-- Tab content -->
+                    <div class="tab-content p-4" id="pills-tabContent-basic-forms">
+                        <div class="tab-pane tab-example-design fade show active" id="pills-basic-forms-design"
+                        role="tabpanel" aria-labelledby="pills-basic-forms-design-tab">
+                        
+                        <div class="row">
+                            <!-- Input -->
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label" for="warehouses">To WareHouse</label>
+                                <select  id="warehouses" name="warehouse" class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    {% for warehouse in warehouses %}
+                                        <option value="{{ warehouse.w_name }}">{{ warehouse.country }}</option> 
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label" for="types">Type</label>
+                                <select id="types" name="type_name" class="form-select" aria-label="Default select example"> 
+                                    <option selected>Open this select menu</option>
+                                    {% for type in types %}
+                                        <option value="{{ type.type_name }}">{{type}}</option> 
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                                <div class="col-lg-6 mb-3">
+                                    <label class="form-label" for="textInput">Quantity</label>
+                                    <input type="number" name="quantity" id="textInput" class="form-control" placeholder="Input Text">
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <label class="form-label" for="textInput">Photos</label>
+                                    <input type="file" name="photo" id="textInput" class="form-control" placeholder="Input Text">
+                                </div>
+                                
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom04" class="form-label">Customer Name</label>
+                                    <input type="text" name="cname" class="form-control" id="validationCustom03" required>
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom04" class="form-label">Email Address</label>
+                                    <input type="email" name="cemail" class="form-control" id="validationCustom03" required>
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom04" class="form-label">Phone No</label>
+                                    <input type="phone" name="cphone" class="form-control" id="validationCustom03" required>
+                                </div>
+                            </div>
+
+
+                            <div class="row">   
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom03" class="form-label">Address</label>
+                                        <input type="text" name="caddress" class="form-control" id="validationCustom03" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid city.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom03" class="form-label">City</label>
+                                        <input type="text" name="city" class="form-control" id="validationCustom03" required>
+                                        <div class="invalid-feedback">
+                                        Please provide a valid city.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom04" class="form-label">State</label>
+                                        <input type="text" name="state" class="form-control" id="validationCustom03" required>
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom04"  class="form-label">Country</label>
+                                        <input type="text" name="country" class="form-control" id="validationCustom03" required>
+                                    </div>
+
+                                    <div class="col-md-3 mb-3">
+                                        <label for="validationCustom04" class="form-label">Pick Up Date</label>
+                                        <input type="date" name="pickup_date" class="form-control" id="validationCustom03" required>
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                        <label class="form-check-label" for="invalidCheck">
+                                            Agree to terms and conditions
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            You must agree before submitting.
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                            </div>                        
+                        </div>
+                    </form>
+                <div class="tab-pane tab-example-html fade " id="pills-basic-forms-html" role="tabpanel"
+                aria-labelledby="pills-basic-forms-html-tab">
+
+                                <pre><code class="language-markup"><span class="token comment">&lt;!-- Input --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>textInput<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Input<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>textInput<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Input Text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% comment %} <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+    $(document).ready(function() {
+        $('#warehouses').on('change', function() {
+          var warehouseId = $(this).val();
+          $.ajax({
+            url: window.location.protocol + '//' + window.location.host + '/exporter/dashboard/get_types/',
+            type: 'GET',
+            data: { 'warehouse_id': warehouseId },
+            success: function(data) {
+              $('#types').empty();
+              for (var i = 0; i < data.length; i++) {
+                console.log(data[i].type_name);
+                $('#types').append($('<option>', {
+                  value: data[i].id,
+                  text: data[i].type_name
+                }));
+              }
+            }
+          });
+        });
+      });
+      
+</script> {% endcomment %}
+
+{% endblock content %}

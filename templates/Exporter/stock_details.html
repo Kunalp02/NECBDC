@@ -1,0 +1,72 @@
+{% extends 'Exporter/new_dashboard.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        {% comment %} <div class="card">
+            <div class="card-body"> {% endcomment %}
+
+                {% comment %} <h4 class="mt-0 header-title">Bordered table</h4>
+                <p class="text-muted mb-4">Add <code>.table-bordered</code> for
+                    borders on all sides of the table and cells.
+                </p> {% endcomment %}
+
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0 table-centered">
+                        <thead>
+                        <tr>
+                            <th>Type Id</th>
+                            <th>Type Name</th>
+                            <th>Type Quantity</th>
+                            <th>WareHouse Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for type in types %}
+                        <tr>
+                            <td>{{type.id}}</td>
+                            <td>{{type.type_name}}</td>
+                            <td>{{type.type_quantity}}</td>
+                            <td>{{type.stock.warehouse.w_name}}</td>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table><!--end /table-->
+                </div><!--end /tableresponsive-->
+            {% comment %} </div><!--end card-body-->
+        </div><!--end card--> {% endcomment %}
+    </div><!--end col-->
+</div><!--end row-->
+
+
+
+ 
+
+
+    <div class="table-responsive">
+                    <table class="table table-bordered mb-0 table-centered">
+                        <thead>
+                        <tr>
+                            <th>Warehouse Name</th>
+                            <th>Stock Capacity</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for warehouse_detail in warehouse_details %}
+                        <tr>
+                            <td>{{warehouse_detail.warehouse.w_name}}</td>
+                            <td>{{warehouse_detail.stock_capacity}}</td>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table><!--end /table-->
+                </div><!--end /tableresponsive-->
+
+
+{% endblock content %}
+
