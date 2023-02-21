@@ -79,13 +79,10 @@ Please adhere to this project's `code of conduct`.
 
 
 ## Project Gallery
-![05](https://user-images.githubusercontent.co![02](https://user-images.githubusercontent.com/95534553/220362544-99924589-3369-4d6f-92f0-fb249c4394e8.png)
-m/95534553/220362407-a76a7358-5268-45db-9eb1-b50356c85565.png)
+![05](https://user-images.githubusercontent.co![02](https://user-images.githubusercontent.com/95534553/220362544-99924589-3369-4d6f-92f0fb249c4394e8.png)m/95534553/220362407-a76a7358-5268-45db-9eb1-b50356c85565.png)
 ![06](https://user-images.githubusercontent.com/95534553/220362493-0774b42e-7f81-4059-b2fb-0ac8c0a4c424.png)
 ![09](https://user-images.githubusercontent.com/95534553/220362508-14e877c8-fbdd-443e-99e9-04e1f63c593d.png)
-![10](https://user-images.githubusercontent.com![Uploa![12](https://user-images.githubusercontent.com/95534553/220362527-1fa96860-25f5-49a2-99b1-b30f6494e4f2.png)
-ding 11.png…]()
-/95534553/220362519-1c538e53-61c3-4ca0-99e2-591a7a391248.png)
+![10](https://user-images.githubusercontent.com![Uploa![12](https://user-images.githubusercontent.com/95534553/220362527-1fa96860-25f5-49a2-99b1-b30f6494e4f2.png)ding 11.png…]()/95534553/220362519-1c538e53-61c3-4ca0-99e2-591a7a391248.png)
 ![07](https://user-images.githubusercontent.com/95534553/220362618-87fd03a3-c5f3-491f-9061-3ce5c02a5678.png)
 ![08](https://user-images.githubusercontent.com/95534553/220362632-30568bc2-1615-4ba1-a7d0-940cd7aa477c.png)
 
