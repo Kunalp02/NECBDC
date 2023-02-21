@@ -320,7 +320,6 @@ def send_payment_link(request, order_number):
     return redirect('payments')
 
 def send_payout_link(request, order_number):
-    order = Order.objects.get(order_number=order_number)
     return redirect('payments')
 
 
