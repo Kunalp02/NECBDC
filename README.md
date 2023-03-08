@@ -73,9 +73,9 @@ On Exporter Side
 
 Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
+See `CONTRIBUTING.MD` for ways to get started.
 
-Please adhere to this project's `code of conduct`.
+Please adhere to this project's `code_of_conduct.md`.
 
 
 ## Project Gallery
@@ -95,8 +95,7 @@ Please adhere to this project's `code of conduct`.
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
-
+[MIT](https://github.com/Kunalp02/NECBDC/blob/8b144260b7b9fa79365b0bbb9d6fdd876c41e0fb/LICENCE.md)
 
 ## 🚀 About Me
 I'm a full stack python developer. You can find me here
