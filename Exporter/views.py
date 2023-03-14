@@ -11,6 +11,7 @@ import razorpay
 from pprint import pprint
 import math
 from trycourier import Courier
+import requests
 
 
 client = razorpay.Client(auth=("rzp_test_7XJSI9QBxhtFSQ", "FGTnbTqN5gpIW9MVDJx9TAQJ"))
@@ -68,7 +69,7 @@ def ExporterSignup(request):
             auth.login(request, user)
 
 
-            resp = client.send_message(
+            resp = courier_client.send_message(
             message={
                 "to": {
                 "email": user.email,
@@ -276,7 +277,7 @@ def orders(request):
 def payments(request):
     payments = Payment.objects.filter(user=request.user)    
     for payment in payments:
-        if not payment.payment_id == '':
+        if not payment.payment_id == '' and payment.order.order_type == "Import":
             payment_status = client.payment_link.fetch(payment_link_id=payment.payment_id)
             payment.status = payment_status['status']
             payment.save()
@@ -287,27 +288,87 @@ def payments(request):
 
 
 def send_payment_link(request, order_number):
+    # this will check the order type and send the payment link accordingly
+    # if order type is import then directly creates a payment and sends the payment link tp the customer
+    # if order type is export then creates a contact, if contact has been already created then returns the contact id after that sends the payout link to the customer.
+    user = request.user
     order = Order.objects.get(order_number=order_number)
     payment = Payment.objects.get(user=request.user, order=order)
-    payment_link = client.payment_link.create({
-    "amount": math.ceil((order.order_total)*100),
-    "currency": "INR",
-    "accept_partial": False,
-    "description": "Testing",
-    "customer": {
-        "name": order.cname,
-        "email": order.cemail,
-    },
-    "notify": {
-        "email": True,
-    },
-    "reminder_enable": True,
-    "notes": {
-        "delivery": "Deliver to the receptionist"
-    },
-    "callback_url": "http://127.0.0.1:8000/exporter/dashboard/payments/",
-    "callback_method": "get"
-    })
+    if order.order_type == 'Import':
+        payment_link = client.payment_link.create({
+        "amount": math.ceil((order.order_total)*100),
+        "currency": "INR",
+        "accept_partial": False,
+        "description": "Testing",
+        "customer": {
+            "name": order.cname,
+            "email": order.cemail,
+        },
+        "notify": {
+            "email": True,
+        },
+        "reminder_enable": True,
+        "notes": {
+            "delivery": "Deliver to the receptionist"
+        },
+        "callback_url": "http://127.0.0.1:8000/exporter/dashboard/payments/",
+        "callback_method": "get"
+        })
+
+    elif order.order_type == 'Export':
+        # For Creating Contact on razorpay server
+        url = 'https://api.razorpay.com/v1/contacts'
+        headers = {'Content-Type': 'application/json'}
+        auth = ('rzp_test_7XJSI9QBxhtFSQ', 'FGTnbTqN5gpIW9MVDJx9TAQJ')
+
+        data = {
+            "name":"Gaurav Kumar",
+            "email":"gaurav.kumar@example.com",
+            "contact":"9123456789",
+            "type":"employee",
+            "reference_id":"Acme Contact ID 12345",
+            "notes":{
+                "notes_key_1":"Tea, Earl Grey, Hot",
+                "notes_key_2":"Tea, Earl Grey… decaf."
+            }
+        }
+
+        response = requests.post(url, headers=headers, auth=auth, json=data)
+        contact_id = response.json()['id']
+        print(response.json()['id'])
+        print("This is a Export Payout link ", response.json())
+
+        # Sending payout link to customer
+        url = 'https://api.razorpay.com/v1/payout-links'
+        headers = {'Content-Type': 'application/json'}
+        auth = ('rzp_test_7XJSI9QBxhtFSQ', 'FGTnbTqN5gpIW9MVDJx9TAQJ')
+
+        data = {
+            "account_number": "2323230085221100",
+            "contact": {
+                "id": contact_id,
+            },
+            "amount": order.order_total,
+            "currency": "INR",
+            "purpose": "payout",
+            "description": "Payout link for Gaurav Kumar",
+            "receipt": order.order_number,
+            "send_sms": True,
+            "send_email": True,
+            "notes": {
+                "notes_key_1":"Tea, Earl Grey, Hot",
+                "notes_key_2":"Tea, Earl Grey… decaf."
+            },
+            # "expire_by": 1545384058 #This field is populated only if you have enabled the expiry feature for Payout Links.
+        }
+
+        response = requests.post(url, headers=headers, auth=auth, json=data)
+        payment_link = response.json()
+        print(response.json())
+
+
+
+
 
     pprint(payment_link)
 
@@ -338,9 +399,6 @@ def send_payment_link(request, order_number):
 
     print(resp['requestId'])
 
-    return redirect('payments')
-
-def send_payout_link(request, order_number):
     return redirect('payments')
 
 

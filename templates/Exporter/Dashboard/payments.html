@@ -28,6 +28,7 @@
                         <thead>
                         <tr class="table-primary">
                             <th scope="col">Order Number</th>
+                            <th scope="col">Order Type</th>
                             <th scope="col">Payment Status</th>
                             <th scope="col">Amount in Rs</th>
                             <th scope="col">Invoice</th>
@@ -40,14 +41,26 @@
                           <form action="{% url 'send_payment_link' payment.order.order_number %}" method="POST">
                             {% csrf_token %}
                             <th scope="row">{{payment.order.order_number}}</th>
+                            <td>{{payment.order.order_type}}</td>
                             <td>{{payment.status}}</td>
                             <td>{{payment.amount}}</td>
                             <td><a href="{% url 'invoice' payment.order.order_number %}">Invoice</a></td>
+
                             {% if payment.status == 'paid' %}
-                              <td><button class="btn-grey" disabled>Send Payment Link</button></td>
+                              {% if payment.order.order_type == 'Import' %}
+                                <td><button class="btn-grey" disabled>Send Payment Link</button></td>
+                              {% else %}
+                                <td><button class="btn-primary">Send Payout Link</button></td>                              
+                              {% endif %}
+
                             {% else %}
-                              <td><button class="btn-primary">Send Payment Link</button></td>
+                              {% if payment.order.order_type == 'Import' %}
+                                <td><button class="btn-primary">Send Payment Link</button></td>
+                              {% else %}
+                                <td><button class="btn-primary">Send Payout Link</button></td>                              
                             {% endif %}
+                            {% endif %}
+
                           </form>
                         </tr>
                         {% endfor %}

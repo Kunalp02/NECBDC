@@ -1,6 +1,6 @@
 {% extends 'Exporter/Dashboard/base.html' %}
 {% block content %}
-
+{% load static %}
 
 
 <!-- Page Content -->
@@ -134,9 +134,12 @@
               <td><span class="text-dark fw-bold">Total Amount</span></td>
               <td><span class="text-dark fw-bold">Rs.{{order.order_total}}</span></td>
             </tr>
+
+            <img src="{% static 'images/paid.png' %}" alt="" srcset="">
           </tbody>
         </table>
   </div>
+
   <div class="border-top pt-8">
       <div >
           <h5 class="mb-1">Notes:</h5>

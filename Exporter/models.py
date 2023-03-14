@@ -123,6 +123,7 @@ class Request(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, default=False)
+    contact_id = models.CharField(max_length=50, blank=True, null=True)
     request = models.OneToOneField(Request, on_delete=models.CASCADE, related_name='order')
     order_number = models.CharField(max_length=30, default=generate_order_number, unique=True)
     type_name = models.CharField(max_length=100, default=False)
