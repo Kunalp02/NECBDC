@@ -296,11 +296,9 @@
               const responseElement = document.createElement("div");
               responseElement.classList.add("chatbot-message", "bot");
 
-              var message = { 'message': messageText };
-              // https://web-production-5c628.up.railway.app/chat/
-              
+              var message = { 'message': messageText };              
               console.log(message);
-              fetch('web-production-6bd7.up.railway.app/chat/', {
+              fetch('https://web-production-8ae6.up.railway.app/chat/', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify(message),

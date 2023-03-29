@@ -26,5 +26,3 @@ def post_detail(request, slug):
             'message' : 'Something Went Wrong',
         }
         return render(request, 'Blogs\Post_detail.html', context)
-
-

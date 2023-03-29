@@ -7,5 +7,6 @@ from . import views
 urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('post_detail/<slug:slug>', views.post_detail, name='post_detail')
-
 ]
+
+

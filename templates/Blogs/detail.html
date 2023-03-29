@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{%block css%}
+.blog{
+    width:70vw;
+    border:2px solid green;
+    height:100%;
+    margin:2rem auto;
+    padding:1rem;
+    background-color:rgba(236, 248, 247, 1) ;
+}
+.blog h2{
+    text-align:center;
+    font-weight:bolder;
+    margin:15px;
+    padding:15px;
+}
+
+img{
+    width:50%;
+    height:50%;
+    margin:auto;
+}
+.center{
+    display:flex;
+    justify-content:center;
+}
+.desc{
+    width:60vw;
+    height:40%;
+    margin:15px auto;
+    padding:15px;
+}
+
+{%endblock%}
+{%block body%}
+<div class="blog">
+<h2>{{post.title}}</h2>
+<div class="center">
+<img src={{post.img.url}}>
+</div>
+<div class="desc">
+{{post.desc|safe}}
+</div>
+</div>
+{%endblock%}
