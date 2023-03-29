@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Kunal\Project\Clg\Minor\Django_Working\NECBDC\myvenv"
+VIRTUAL_ENV="C:\Kunal\Project\College\Minor\Django_Working\Necbdc clone\NECBDC\myvenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
