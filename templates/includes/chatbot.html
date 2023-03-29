@@ -95,8 +95,10 @@
     .chatbot-message.user {
       background-color: #245af0;
       float: right;
+      display: block;
     }
     .chatbot-message.bot {
+      display: block;
       background-color: #245af0;
       float: left;
     }
@@ -270,6 +272,7 @@
 
             // Clear message input
             messageInput.value = "";
+
 
             // Add message to chatbot messages
             const messageElement = document.createElement("div");
